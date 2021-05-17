@@ -1,7 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 html{
   font-family: 'Titillium Web', sans-serif;
+}
+
+.titleApp{
+  font-family: 'Lobster', cursive;
+  font-size: 35px;
+  margin-left: 10px;
+}
+
+.ButtonAddNoteHome{
+  width: 100%;
 }
 
 .formInputNote{
@@ -27,6 +38,25 @@ html{
 }
 
 .CardItem{
+  display: flex;
   margin-top: 10px;
   padding: 10px;
+}
+
+.GridCard{
+  width: 95%;
+}
+
+.GridCardButton{
+
+  margin-top: 25px;
+  align-content: center;
+}
+
+.GridCardButton Button{
+  margin-top: 10px;
+}
+
+.btnCardUpdDel{
+  width: 100%;
 }

@@ -28,10 +28,10 @@ const NoteHome = () => {
 
     return (
         <>
-            <h2>Note-App</h2>
-            <hr/>
+            <h2 className="titleApp">Note-App</h2>
+
             <Container maxWidth="md">
-                <Button onClick={handleButtom} variant="contained" color="default">Agregar nota</Button>
+                <Button className="ButtonAddNoteHome" onClick={handleButtom} variant="contained" color="default">Agregar nota</Button>
                 
                 {
                     stateButton === true ? (
@@ -42,17 +42,18 @@ const NoteHome = () => {
                 }
 
                 {
-                    data.length > 0 ? (
+                    typeof data !== 'undefined' ? (
                         data.map( nt => (
                             <NoteCard 
                                 key={ nt.id }
+                                id={ nt.id }
                                 title={ nt.title }
                                 content={ nt.content }
                             />
                         ))
                     )
                     :
-                    ''
+                    <p>No hay notas existentes</p>
                 }
 
             </Container>
