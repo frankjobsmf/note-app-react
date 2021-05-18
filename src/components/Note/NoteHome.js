@@ -5,6 +5,7 @@ import NoteCard from './NoteCard';
 //material UI
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //useFetchNotes
 import {useFetchNotes} from '../../hooks/useFetchNotes';
@@ -13,7 +14,7 @@ const NoteHome = () => {
     //useState
     const [stateButton, setStateButtom] = useState(false);
 
-    const {data} = useFetchNotes();
+    const { data, loading } = useFetchNotes();
 
     console.log(data);
 
@@ -42,6 +43,10 @@ const NoteHome = () => {
                 }
 
                 {
+                    loading ? <CircularProgress color="primary" /> : ''
+                }
+
+                {   
                     typeof data !== 'undefined' ? (
                         data.map( nt => (
                             <NoteCard 

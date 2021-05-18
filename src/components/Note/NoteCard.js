@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+//helpers
+import { deleteNoteById } from '../../helpers/servicesNote';
+
 //Material UI
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -19,6 +22,11 @@ const NoteCard = ( { id, title, content }) => {
         }
     }
 
+    const handleButtonDelete = () => {
+        deleteNoteById( id );
+    }
+
+
     return (
         <>
             <Card className="CardItem">
@@ -37,7 +45,9 @@ const NoteCard = ( { id, title, content }) => {
                     <Button
                         className="btnCardUpdDel"
                         variant="contained"     
-                        color="secondary">
+                        color="secondary"
+                        onClick={ handleButtonDelete }
+                        >
                         Eliminar
                     </Button>
                 </Grid>

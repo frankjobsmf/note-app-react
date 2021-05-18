@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+//helpers
+import {addNote } from '../../helpers/servicesNote';
 
 //Material UI
 import TextField from '@material-ui/core/TextField';
@@ -7,14 +10,42 @@ import Button from '@material-ui/core/Button';
 
 const NoteInput = () => {
 
+    const [ InputTitle, setInputTitle ] = useState('');
+    const [ InputContent, setInputContent ] = useState('');
+
+    const handleInputTitleChange = ( e ) => {
+        setInputTitle( e.target.value );
+    }
+
+    const handleInputContentChange = ( e ) => {
+        setInputContent( e.target.value );
+    }
+
+    const NoteObject = {
+        title: InputTitle,
+        content: InputContent
+    }
+
+    const handleButtonAdd = ( e ) => {
+        e.preventDefault();
+
+        if( InputTitle === '' && InputContent === '' ){
+            return;
+        }
+
+        addNote( NoteObject );
+    }
+
     return (
-        <form className="formInputNote">
+        <form className="formInputNote" onSubmit={ handleButtonAdd }>
 
             <div className="divInputNote">
                 <TextField 
                     className="titleTextField"
                     label="Titulo" 
                     variant="outlined"
+                    value={ InputTitle }
+                    onChange={ handleInputTitleChange }
                 />
             </div>
             <div className="divInputNote">
@@ -24,13 +55,17 @@ const NoteInput = () => {
                     multiline
                     rows={4}
                     variant="outlined"
+                    value={ InputContent }
+                    onChange={ handleInputContentChange }
                 />
             </div>
             <div className="divInputNote">
                 <Button
                     className="btn-save"
                     variant="contained"     
-                    color="primary">
+                    color="primary"
+                    onClick={ handleButtonAdd }
+                    >
                     Guardar
                 </Button>
             </div>
