@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NoteInput from './NoteInput';
 import NoteCard from './NoteCard';
 
@@ -13,10 +13,11 @@ import {useFetchNotes} from '../../hooks/useFetchNotes';
 const NoteHome = () => {
     //useState
     const [stateButton, setStateButtom] = useState(false);
+    const [ Counter, setCounter ] = useState( 0 );
+    
+    const { data, loading } = useFetchNotes( Counter );  
 
-    const { data, loading } = useFetchNotes();
 
-    console.log(data);
 
     const handleButtom = () => {
         if ( stateButton ){
@@ -36,7 +37,7 @@ const NoteHome = () => {
                 
                 {
                     stateButton === true ? (
-                        <NoteInput />
+                        <NoteInput Counter={ Counter } setCounter={ setCounter }/>
                     )
                     :
                     ''
@@ -54,6 +55,8 @@ const NoteHome = () => {
                                 id={ nt.id }
                                 title={ nt.title }
                                 content={ nt.content }
+                                Counter={ Counter }
+                                setCounter={ setCounter }
                             />
                         ))
                     )

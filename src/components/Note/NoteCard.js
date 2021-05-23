@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import NoteUpdate from './NoteUpdate';
 
-const NoteCard = ( { id, title, content }) => {
+const NoteCard = ( { id, title, content, Counter, setCounter }) => {
 
     const [ UpdateNoteBtn, setUpdateNoteBtn ] = useState( false );
 
@@ -24,6 +24,7 @@ const NoteCard = ( { id, title, content }) => {
 
     const handleButtonDelete = () => {
         deleteNoteById( id );
+        setCounter(Counter - 1);
     }
 
 

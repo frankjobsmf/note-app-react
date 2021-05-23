@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
-const NoteInput = () => {
+const NoteInput = ( { Counter,  setCounter } ) => {
 
     const [ InputTitle, setInputTitle ] = useState('');
     const [ InputContent, setInputContent ] = useState('');
@@ -34,6 +34,7 @@ const NoteInput = () => {
         }
 
         addNote( NoteObject );
+        setCounter(Counter + 1);
     }
 
     return (
